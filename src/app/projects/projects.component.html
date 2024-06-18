@@ -1,0 +1,44 @@
+
+    <div class="bg-light p-5 rounded">
+        <div class="d-flex align-items-center justify-content-center mb-4"> 
+        <h1 style="display: inline-block;">Проекты </h1>
+        <a [routerLink]="['/projects/add']" style="margin-left: 10px;">
+            <i class="fas fa-plus-square" style="font-size: 30px; color: rgb(0, 0, 0);"aria-hidden="true">
+            </i>
+        </a>
+        </div>
+    </div>
+        <div class="mb-4">
+            <input type="text" placeholder="Фильтр по названию или описанию" (keyup.enter)="filterProjects($event)" 
+            style="width: 100%; box-sizing: border-box; font-size: 24px;" />
+       
+        
+            
+                <ul class="list1a">
+                    <div *ngIf="filteredProjects.length === 0; else projectsList" class="no-projects">
+                        <p>Проектов не найдено</p>
+                    </div>
+                    <ng-template #projectsList>
+                    <li *ngFor="let project of filteredProjects; let i = index" (click)="goToProjectDetails(project.id)">
+                        
+                        <p>
+                          <strong>Название проекта:</strong> {{ project.projectName }}<br>
+                          <strong>Дата начала:</strong> {{ project.startDate| date: 'yyyy-MM-dd' }}<br>
+                          <strong>Дата окончания:</strong> {{ project.endDate| date: 'yyyy-MM-dd' }}<br>
+                          <strong>Незавершенных задач:</strong>{{tasksCount[i]}}
+                        
+                        </p>
+                        <div class="btn-group">
+                            <a [routerLink]="['/projects/update', project.id]"  style="position: absolute; top: 20px; right: 70px;text-decoration: none; cursor: pointer;">
+                                <i class="fas fa-pencil-alt" style="font-size: 24px; color: rgb(0, 0, 0);"aria-hidden="true"></i>
+                            </a>
+                            <button class="btn" (click)="deleteProject($event, project.id, i)" style="background: none;position: absolute; top: 19px; right: 20px;text-decoration: none; cursor: pointer;"><i class="fas fa-times" style=" font-size: 20px; color: rgb(0, 0, 0);"aria-hidden="true" ></i></button>
+                           
+                        </div>
+                   
+                      </li>
+                    </ng-template>
+                    
+            </ul>
+            
+    </div>

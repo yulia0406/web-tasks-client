@@ -1,0 +1,30 @@
+
+    <div class="bg-light p-5 rounded">
+        <div class="d-flex align-items-center justify-content-center mb-4"> 
+        <h1 style="display: inline-block;">Задачи </h1>
+        
+        </div>
+    </div>
+            
+                <ul class="list4a">
+                    <div *ngIf="tasks.length === 0; else projectsList" class="no-tasks">
+                        <p>В ДАННОМ ПРОЕКТЕ ЗАДАЧИ ОТСУТСТВУЮТ</p>
+                    </div>
+                    <ng-template #projectsList>
+                    <li *ngFor="let task of tasks; let i = index" >
+                        
+                        <p [style.textDecoration]="task.completed ? 'line-through':'none'"> {{ task.name }}<br>
+                        </p>
+                        <p>
+                          <strong>Планируемая дата завершения:</strong> {{ task.plannedEndDate }}<br>
+                        </p>
+                        
+                              <i class="{{ icon }}"  [ngStyle]="{ 'color': taskColors && taskColors[i] ? taskColors[i] : 'black'  }" style="position: absolute; top: 32px; left: 16px; font-size: 10px"  aria-hidden="true"></i>
+                              <button class="btn" (click)="deleteTask(task.id, i)" style="background: none;position: absolute; top: 19px; right: 20px;text-decoration: none; cursor: pointer;"><i class="fas fa-times" style=" font-size: 20px; color: rgb(0, 0, 0);"aria-hidden="true" ></i></button>
+    
+                      </li>
+                    </ng-template>
+                    
+                    
+            </ul>
+            

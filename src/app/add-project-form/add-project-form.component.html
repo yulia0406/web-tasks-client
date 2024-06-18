@@ -1,0 +1,22 @@
+
+<div class="m-4">
+    
+    <div class="container">
+        
+        <h1 >Создание проекта </h1> <br>
+        <label>Название проекта</label>
+        <input type="text" class="type-1" placeholder="Название проекта" [(ngModel)]="projectName">
+        <label>Описание проекта</label>
+        <input type="text" class="type-1" placeholder="Описание проекта" [(ngModel)]="projectDescription">
+        <label>Дата начала</label>
+        <input type="date" class="type-1" placeholder="Дата начала" [(ngModel)]="startDate">
+        <label>Дата окончания</label>
+        <input type="date" class="type-1" placeholder="Дата окончания" [(ngModel)]="endDate">
+        <div class="d-flex justify-content-between">
+            <p style="text-align: center;">
+            <button type="submit" class="submit" (click)="save()">Добавить</button>
+        </p>
+        </div>
+    </div>
+    
+</div>
